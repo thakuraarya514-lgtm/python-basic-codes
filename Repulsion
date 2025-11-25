@@ -1,0 +1,86 @@
+import math
+
+def repulsion_force(p1, p2, k=1):
+    # p1 and p2 are points (x, y)
+    x1, y1 = p1
+    x2, y2 = p2
+
+    dx = x1 - x2
+    dy = y1 - y2
+    distance = math.sqrt(dx**2 + dy**2)
+
+    if distance == 0:
+        return (0, 0)  # avoid division by zero
+
+    force = k / (distance**2)
+
+    # Normalize direction
+    fx = (dx / distance) * force
+    fy = (dy / distance) * force
+
+    return (fx, fy)
+
+# Example:
+p1 = (4, 3)
+p2 = (1, 1)
+print("Repulsion Force:", repulsion_force(p1, p2))
+import math
+import random
+
+def repulsion(p1, p2, k=5):
+    x1, y1 = p1
+    x2, y2 = p2
+    dx = x1 - x2
+    dy = y1 - y2
+    dist = math.sqrt(dx*dx + dy*dy)
+
+    if dist == 0:
+        return (0, 0)
+
+    force = k / (dist**2)
+    return (force * dx/dist, force * dy/dist)
+
+# Initialize random particles
+particles = [(random.randint(0, 20), random.randint(0, 20)) for _ in range(5)]
+
+print("Initial Particles:", particles)
+
+# Compute repulsion on each particle
+for i in range(len(particles)):
+    fx_total, fy_total = 0, 0
+
+    for j in range(len(particles)):
+        if i != j:
+            fx, fy = repulsion(particles[i], particles[j])
+            fx_total += fx
+            fy_total += fy
+
+    print(f"Net Repulsion on Particle {i}:", (round(fx_total, 2), round(fy_total, 2)))
+import math
+import random
+
+particles = [{"x": random.uniform(0, 10), "y": random.uniform(0, 10)} for _ in range(5)]
+
+def repulsion_force(a, b, k=2):
+    dx = a["x"] - b["x"]
+    dy = a["y"] - b["y"]
+    dist = math.sqrt(dx*dx + dy*dy) + 0.001
+
+    force = k / (dist**2)
+    return (force * dx/dist, force * dy/dist)
+
+# Simulate 10 steps
+for step in range(10):
+    for i in range(len(particles)):
+        fx, fy = 0, 0
+        for j in range(len(particles)):
+            if i != j:
+                f = repulsion_force(particles[i], particles[j])
+                fx += f[0]
+                fy += f[1]
+
+        # Move particle slightly
+        particles[i]["x"] += fx
+        particles[i]["y"] += fy
+
+    print(f"Step {step+1}: {particles}")
