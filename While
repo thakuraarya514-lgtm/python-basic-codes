@@ -1,0 +1,59 @@
+i = 1
+while i <= 10:
+    print(i)
+    i += 1
+i = 1
+total = 0
+
+while i <= 10:
+    total += i
+    i += 1
+
+print("Sum =", total)
+i = 1
+
+while i <= 20:
+    if i % 2 == 0:
+        print(i)
+    i += 1
+n = 5
+
+while n > 0:
+    print(n)
+    n -= 1
+
+print("Blast off!")
+num = 1234
+rev = 0
+
+while num > 0:
+    digit = num % 10
+    rev = rev * 10 + digit
+    num //= 10
+
+print("Reversed Number =", rev)
+num = int(input("Enter number: "))
+i = 1
+
+while i <= 10:
+    print(num, "x", i, "=", num * i)
+    i += 1
+secret = 7
+guess = 0
+
+while guess != secret:
+    guess = int(input("Guess the number: "))
+
+print("Correct! 🎉")
+i = 1
+
+while True:
+    print(i)
+    if i == 5:
+        break
+    i += 1
+i = 1
+
+while i <= 5:
+    print("*" * i)
+    i += 1
