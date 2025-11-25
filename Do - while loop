@@ -1,0 +1,45 @@
+i = 1
+while True:
+    print(i)
+    i += 1
+    if i > 5:
+        break
+while True:
+    name = input("Enter your name: ")
+    if name.strip() != "":
+        break
+
+print("Hello,", name)
+total = 0
+
+while True:
+    num = int(input("Enter number (0 to stop): "))
+    total += num
+    if num == 0:
+        break
+
+print("Total =", total)
+while True:
+    print("\n1. Add")
+    print("2. Subtract")
+    print("3. Exit")
+
+    choice = int(input("Enter choice: "))
+
+    if choice == 1:
+        print("You selected Add")
+    elif choice == 2:
+        print("You selected Subtract")
+    elif choice == 3:
+        print("Exiting...")
+        break
+    else:
+        print("Invalid choice! Try again.")
+secret = 7
+
+while True:
+    guess = int(input("Guess number: "))
+    if guess == secret:
+        print("Correct! 🎉")
+        break
+    print("Wrong! Try again.")
